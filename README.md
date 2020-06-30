@@ -6,5 +6,6 @@
 
 ## ✋ BACK-END  
 - Node.js
-  - [nvm과 npm의 차이](./docs/node/nvm-npm.md)
-  
+  - [nvm과 npm의 차이](./docs/backend/node/nvm-npm.md)
+- REST API
+  - [REST란](./docs/backend/restapi/rest.md)
