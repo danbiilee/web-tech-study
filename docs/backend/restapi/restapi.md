@@ -1,5 +1,7 @@
 # REST API
 
+![rest](../../../imgs/restapi.png)
+
 ## API란
 - `Application Programming Interface`의 약어로 응용 프로그램에서 사용할 수 있도록 데이터와 기능의 집합을 제공하는 인터페이스를 의미한다. 
 - 주로 파일 제어, 창 제어, 문자 제어 등을 위한 인터페이스를 제공한다. 
