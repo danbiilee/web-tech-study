@@ -3,7 +3,7 @@
 ## 1. Mongo DB 설치, 환경변수 등록
 - [DB 생성](https://www.a-mean-blog.com/ko/blog/%EB%8B%A8%ED%8E%B8%EA%B0%95%EC%A2%8C/_/mongoDB-Atlas-%EA%B0%80%EC%9E%85-%EB%B0%A9%EB%B2%95-%EB%AC%B4%EB%A3%8C-mongo-DB-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4)
 - [환경변수 등록](https://www.a-mean-blog.com/ko/blog/Node-JS-%EC%B2%AB%EA%B1%B8%EC%9D%8C/%EC%A3%BC%EC%86%8C%EB%A1%9D-%EB%A7%8C%EB%93%A4%EA%B8%B0/Environment-Variable-%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98)
-- ⚠ ❗ 주의 
+- ⚠ 주의 
   - 몽고DB connection string 가져올 때 버전을 `2.2.12 or later`로 해야 에러나지 않는다.
 
 
