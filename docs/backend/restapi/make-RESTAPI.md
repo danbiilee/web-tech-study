@@ -46,8 +46,6 @@ $ npm install express mongoose body-parser --save
  ┣ 📂models
  ┃ ┗ 📜hero.js
  ┣ 📜index.js
- ┣ 📜package-lock.json
- ┣ 📜package.json
  ┗ 📜README.md
 ```
 
