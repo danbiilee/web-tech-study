@@ -2,15 +2,18 @@
 
 ## 1. Node.js의 모듈
 
-웹 페이지에서 자바스크립트는 script 태그로 로드하며, 여러 자바스크립트 파일을 로드할 경우 하나의 파일로 합쳐져 동일한 유효범위를 갖게 된다.    
-자바스크립트를 기반으로 한 Server-side 언어인 `Node.js`는 이러한 자바스크립트의 문제점을 해결하고자 모듈 시스템의 사실상 표준인 `CommonJS`를 채택해 `module` 단위로 각 기능을 분리할 수 있도록 했다.   
+웹 페이지에서 자바스크립트는 script 태그로 로드하며, 여러 자바스크립트 파일을 로드할 경우 하나의 파일로 합쳐져 동일한 유효범위를 갖게 된다. 자바스크립트를 기반으로 한 Server-side 언어인 `Node.js`는 이러한 자바스크립트의 문제점을 해결하고자 모듈 시스템의 사실상 표준인 `CommonJS`를 채택해 `module` 단위로 각 기능을 분리할 수 있도록 했다.   
+
 모듈은 파일과 1대1 대응 관계를 가지며, 하나의 모듈은 **독립적인 실행 영역(Scope)** 를 가지게 된다. 따라서 Client-side 언어인 자바스크립트와는 달리 전역변수의 중복 문제가 발생하지 않는다.   
+
 모듈은 `module.exports` 혹은 `exports` 객체를 통해 정의하고 외부로 내보낸다. 그렇게 내보내진 모듈은 `require` 함수를 사용해 임포트 한다. 
 
 
 
 ## 2. exports
-모듈 안에서 선언한 것들은 해당 모듈 내부에서만 참조 가능하다. 모듈 안에 선언한 것을 외부로 보내 사용하게 하려면 `exports` 객체를 사용해야 한다.   
+모듈 안에서 선언한 것들은 해당 모듈 내부에서만 참조 가능하다.   
+모듈 안에 선언한 것을 외부로 보내 사용하게 하려면 `exports` 객체를 사용해야 한다.   
+
 모듈을 **파일로 작성**하고, 외부로 보낼 대상을 `exports` 객체의 **프로퍼티 또는 메소드**로 정의한다. 
 
 ```javascript
@@ -22,7 +25,8 @@ exports.area = (r) => PI * r * r;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-circle.js는 독립적인 파일 스코프를 갖는 모듈이다. 따라서 변수 PI는 circle 모듈에서만 유효한 private 변수이고, `exports` 객체에 메소드로 정의된 area와 circumference는 외부로 보내진다.
+circle.js는 독립적인 파일 스코프를 갖는 모듈이다.    
+따라서 변수 PI는 circle 모듈에서만 유효한 private 변수이고, `exports` 객체에 메소드로 정의된 area와 circumference는 외부로 보내진다.
 
 ```javascript
 // app.js
@@ -37,7 +41,8 @@ console.log(`지름이 4인 원의 둘레: ${circle.circumference(4)}`);
 
 
 ## 3. module.exports
-`exports` 객체는 프로퍼티 또는 메소드를 여러 개 정의할 수 있다. 하지만 `module.exports`에는 하나의 값(원시타입, 함수, 객체)만을 할당할 수 있다. 
+`exports` 객체는 프로퍼티 또는 메소드를 여러 개 정의할 수 있다.     
+하지만 `module.exports`에는 하나의 값(원시타입, 함수, 객체)만을 할당할 수 있다. 
 
 ```javascript
 // circle.js
@@ -60,7 +65,8 @@ console.log(`지름이 4인 원의 면적: ${myCircle.area()}`);
 console.log(`지름이 4인 원의 둘레: ${myCircle.circumference()}`);
 ```
 
-`require` 함수를 통해 circle모듈을 할당받은 circle변수는 circle모듈에서 `module.exports`에 할당한 값 자체 즉, 객체를 리턴하는 함수가 된다.    
+app.js에서 `require` 함수를 통해 circle모듈을 할당받은 circle변수는   
+circle모듈(circle.js)에서 `module.exports`에 할당한 값 자체 즉, 객체를 리턴하는 함수가 된다.    
 
 
 ### 3.1 exports 와 module.exports의 차이
@@ -127,7 +133,7 @@ project/
     └── print.js
 ```
 
-위와 같은 디렉터리 구조가 있을 때, app.js 에서 module 폴더의 index 모듈을 임포트하고 싶다면?    
+위와 같은 디렉터리 구조가 있을 때, app.js 에서 module 폴더의 index 모듈을 임포트하고 싶다면?!   
 `require(./module/index)`처럼 직접 모듈을 명시하지 않고 아래와 같이 호출해도 해당 디렉터리의 index.js를 로드한다. 
 
 ```javascript
@@ -135,8 +141,9 @@ project/
 const myModule = require('./module');
 ```
 
-단, index.js 내에서 calc.js 와 print.js를 `require` 함수를 이용해 임포트하고, 그걸 `module.exports`를 이용해 외부로 내보내고 있어야 한다. 
-그러면 app.js에서 한 번의 `require` 함수 호출로 calc.js 와 print.js의 모든 기능을 사용할 수 있다. 
+index 모듈을 임포트함과 동시에 calc 모듈과 print 모듈까지 임포트하고 싶다면?!!    
+index.js 내에서 calc.js 와 print.js를 `require` 함수를 이용해 임포트하고, 그걸 `module.exports`를 이용해 외부로 내보내고 있어야 한다.     
+그러면 app.js에서 index 모듈을 임포트하는 한 번의 `require` 함수 호출로 calc.js 와 print.js의 모든 기능을 사용할 수 있다. 
 
 ```javascript
 // module/index.js
