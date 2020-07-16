@@ -2,7 +2,9 @@
 
 ## 🤚 FRONT-END
 - CSS
-	- [단위](./docs/frontend/CSS/units.md)
+  - [Reset CSS](./docs/frontend/CSS/css-reset.md)  
+  - [단위](./docs/frontend/CSS/units.md)
+- SCSS
 - Javascript
 - React
 
