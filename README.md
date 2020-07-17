@@ -5,6 +5,9 @@
   - [Reset CSS](./docs/frontend/CSS/css-reset.md)  
   - [단위](./docs/frontend/CSS/units.md)
 - SCSS
+  - [컴파일 방법](./docs/frontend/SCSS/complie.md)
+  - [주석](./docs/frontend/SCSS/comment.md)
+  - [데이터 종류](./docs/frontend/SCSS/data-types.md)
 - Javascript
 - React
 
