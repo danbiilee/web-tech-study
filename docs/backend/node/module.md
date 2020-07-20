@@ -1,4 +1,4 @@
-# Module
+# 모듈
 
 ## 1. Node.js의 모듈
 
