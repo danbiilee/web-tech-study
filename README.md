@@ -8,6 +8,8 @@
   - [컴파일 방법](./docs/frontend/SCSS/complie.md)
   - [주석](./docs/frontend/SCSS/comment.md)
   - [데이터 종류](./docs/frontend/SCSS/data-types.md)
+  - [중첩](./docs/frontend/SCSS/nesting.md)
+  - [변수](./docs/frontend/SCSS/variables.md)
 - Javascript
 - React
 
