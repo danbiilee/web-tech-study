@@ -12,6 +12,7 @@
   - [변수](./docs/frontend/SCSS/variables.md)
   - [Import](./docs/frontend/SCSS/import.md)
   - [연산](./docs/frontend/SCSS/operations.md)
+  - [Mixin](./docs/frontend/SCSS/mixins.md)
 - Javascript
 - React
 
