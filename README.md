@@ -13,6 +13,7 @@
   - [Import](./docs/frontend/SCSS/import.md)
   - [연산](./docs/frontend/SCSS/operations.md)
   - [Mixin](./docs/frontend/SCSS/mixins.md)
+  - [확장](./docs/frontend/SCSS/extend.md)
 - Javascript
 - React
 
