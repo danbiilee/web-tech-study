@@ -15,6 +15,8 @@
   - [Mixin](./docs/frontend/SCSS/mixins.md)
   - [확장](./docs/frontend/SCSS/extend.md)
   - [함수](./docs/frontend/SCSS/functions.md)
+  - [조건](./docs/frontend/SCSS/if.md)
+  - [반복](./docs/frontend/SCSS/iteration.md)
 - Javascript
 - React
 
