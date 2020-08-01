@@ -14,10 +14,16 @@
 
 
 아래는 초기화 버튼을 클릭했을 때, 이름 `input` 태그에 포커스가 잡히도록 하는 예제이다.   
-다른 코드는 이전의 InputSample 예제와 동일해 생략했다. 
+(`onChnage` 함수의 코드는 생략했다.)
 
 ```js
 function InputSample() {
+  const [inputs, setInputs] = useState({ 
+    name: '',
+    id: ''
+  });
+  const { name, id } = inputs;
+
   const nameInput = useRef(); // 1
 
   const onReset = () => {
