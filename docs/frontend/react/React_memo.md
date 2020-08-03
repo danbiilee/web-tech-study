@@ -87,10 +87,9 @@ function App() {
 ```
 
 
-> [❗❗❗]    
-> `useMemo`, `useCallback`, `React.memo`는 실제로 컴포넌트의 성능을 개선할 수 있는 상황에서만 사용하자.    
-> - User 컴포넌트에서 `b`와 `button`에 `onClick`으로 설정한 `onToggle`과 `onRemove`함수들은 `useCallback`으로 재사용해도 리렌더링을 막을 수 없으므로, 굳이 재사용할 필요 없다. 
-> - 렌더링 최적화를 하지 않을 컴포넌트에 `React.memo`를 사용하는 건 불필요한 `props` 비교만 하는 것이므로 할 필요 없다. 
+**[❗❗❗] `useMemo`, `useCallback`, `React.memo`는 실제로 컴포넌트의 성능을 개선할 수 있는 상황에서만 사용하자**   
+- User 컴포넌트에서 `b`와 `button`에 `onClick`으로 설정한 `onToggle`과 `onRemove`함수들은 `useCallback`으로 재사용해도 리렌더링을 막을 수 없으므로, 굳이 재사용할 필요 없다. 
+- 렌더링 최적화를 하지 않을 컴포넌트에 `React.memo`를 사용하는 건 불필요한 `props` 비교만 하는 것이므로 할 필요 없다. 
 
 
 `React.memo`의 두 번째 파라미터로 `propsAreEqual`이라는 함수를 전달해 특정 값들만 비교를 하는 것도 가능하다.    
