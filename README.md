@@ -30,9 +30,13 @@
   - [조건부 렌더링](./docs/frontend/react/conditional-rendering.md)
   - [useState](./docs/frontend/react/useState.md)
   - [input 상태 관리하기](./docs/frontend/react/input-state-management.md)
-  - [배열 렌더링](./docs/frontend/react/array-rendering.md)
+  - [배열 렌더링](./docs/frontend/react/rendering-array-1.md)
   - [useRef로 DOM 선택하기](./docs/frontend/react/useRef-select-DOM.md)
   - [useRef로 변수 관리하기](./docs/frontend/react/useRef-manage-variables.md)
+  - [useEffect](./docs/frontend/react/useEffect.md)
+  - [useMemo](./docs/frontend/react/useMemo.md)
+  - [useCallback](./docs/frontend/react/useCallback.md)
+  - [React.memo](./docs/frontend/react/React_memo.md)
 
 
 ## ✋ BACK-END  
