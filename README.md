@@ -37,6 +37,7 @@
   - [useMemo](./docs/frontend/react/useMemo.md)
   - [useCallback](./docs/frontend/react/useCallback.md)
   - [React.memo](./docs/frontend/react/React_memo.md)
+  - [useReducer](./docs/frontend/react/useReducer.md)
 
 
 ## ✋ BACK-END  
