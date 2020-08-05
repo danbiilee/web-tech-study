@@ -39,7 +39,8 @@
   - [React.memo](./docs/frontend/react/React_memo.md)
   - [useReducer](./docs/frontend/react/useReducer.md)
   - [커스텀 Hooks](./docs/frontend/react/custom-hooks.md)
-
+  - [Context API](./docs/frontend/react/context-api.md)
+  - [Immer](./docs/frontend/react/immer.md)
 
 ## ✋ BACK-END  
 - Node.js
