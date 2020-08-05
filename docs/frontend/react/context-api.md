@@ -166,3 +166,16 @@ const User = React.memo(function User({ user }) {
 
 **2️⃣ `dispatch` 사용하기**
 - `dispatch` 함수에 `action` 객체를 전달함으로써 User 컴포넌트가 `onToggle`, `onRemove`함수를 전달받지 않았음에도 사용할 수 있도록 코드를 작성한다. 
+
+
+
+
+## 3. `useReducer` 🆚 `useState`
+
+지난 번과 다르게 `useState`를 사용하는 것과 `useReducer`를 사용하는 것의 큰 차이를 느낄 수 있었을 것이다. 
+
+`useReducer`를 사용하면 이렇게 `dispatch`와 `Context API`를 통해 전역적으로 사용하는 값을 관리할 수 있고,    
+그로 인해 코드의 구조가 훨씬 깔끔해질 수 있다. 
+
+깊은 곳에 위치하는 컴포넌트에게 여러 컴포넌트를 거쳐 함수를 전달해야 한다면,     
+이렇게 `useReducer`와 `Context API`를 사용하면 된다. 
