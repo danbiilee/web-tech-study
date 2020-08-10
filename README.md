@@ -41,6 +41,7 @@
   - [커스텀 Hooks](./docs/frontend/react/custom-hooks.md)
   - [Context API](./docs/frontend/react/context-api.md)
   - [Immer](./docs/frontend/react/immer.md)
+  - [클래스형 컴포넌트](./docs/frontend/react/class-component.md)
 
 ## ✋ BACK-END  
 - Node.js
