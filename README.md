@@ -1,7 +1,5 @@
 # web-tech-study
 
-
-
 ## 🤚 FRONT-END
 - CSS
   - [Reset CSS](./docs/frontend/CSS/css-reset.md)  
