@@ -1,28 +1,33 @@
 # web-tech-study
 
 ## 🤚 FRONT-END
-- CSS
-  - [Reset CSS](./docs/frontend/CSS/css-reset.md)  
-  - [단위](./docs/frontend/CSS/units.md)
 
-- SCSS
-  - [컴파일 방법](./docs/frontend/SCSS/complie.md)
-  - [주석](./docs/frontend/SCSS/comment.md)
-  - [데이터 종류](./docs/frontend/SCSS/data-types.md)
-  - [중첩](./docs/frontend/SCSS/nesting.md)
-  - [변수](./docs/frontend/SCSS/variables.md)
-  - [Import](./docs/frontend/SCSS/import.md)
-  - [연산](./docs/frontend/SCSS/operations.md)
-  - [Mixin](./docs/frontend/SCSS/mixins.md)
-  - [확장](./docs/frontend/SCSS/extend.md)
-  - [함수](./docs/frontend/SCSS/functions.md)
-  - [조건](./docs/frontend/SCSS/if.md)
-  - [반복](./docs/frontend/SCSS/iteration.md)
-  - [내장함수](./docs/frontend/SCSS/built-in-functions.md)
-  
-- Javascript
+### CSS
 
-- React
+- [Reset CSS](./docs/frontend/CSS/css-reset.md)
+- [단위](./docs/frontend/CSS/units.md)
+
+### SCSS
+
+- [컴파일 방법](./docs/frontend/SCSS/complie.md)
+- [주석](./docs/frontend/SCSS/comment.md)
+- [데이터 종류](./docs/frontend/SCSS/data-types.md)
+- [중첩](./docs/frontend/SCSS/nesting.md)
+- [변수](./docs/frontend/SCSS/variables.md)
+- [Import](./docs/frontend/SCSS/import.md)
+- [연산](./docs/frontend/SCSS/operations.md)
+- [Mixin](./docs/frontend/SCSS/mixins.md)
+- [확장](./docs/frontend/SCSS/extend.md)
+- [함수](./docs/frontend/SCSS/functions.md)
+- [조건](./docs/frontend/SCSS/if.md)
+- [반복](./docs/frontend/SCSS/iteration.md)
+- [내장함수](./docs/frontend/SCSS/built-in-functions.md)
+
+### Javascript
+
+### React
+
+- **🚪 입문**
   - [JSX 기본 규칙](./docs/frontend/react/JSX-rules.md)
   - [props](./docs/frontend/react/props.md)
   - [조건부 렌더링](./docs/frontend/react/conditional-rendering.md)
@@ -40,13 +45,17 @@
   - [Context API](./docs/frontend/react/context-api.md)
   - [Immer](./docs/frontend/react/immer.md)
   - [클래스형 컴포넌트](./docs/frontend/react/class-component.md)
+- **🌼 스타일**
+  - [Styled Components](./docs/frontend/react/styled-components.md)
 
-## ✋ BACK-END  
+## ✋ BACK-END
+
 - Node.js
+
   - [Node.js란](./docs/backend/node/nodejs.md)
   - [nvm과 npm의 차이](./docs/backend/node/nvm-npm.md)
   - [모듈](./docs/backend/node/module.md)
-  
+
 - REST API
   - [REST란](./docs/backend/restapi/rest.md)
   - [REST API, RESTful이란](./docs/backend/restapi/RESTAPI-RESTful.md)
