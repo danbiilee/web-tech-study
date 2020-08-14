@@ -20,13 +20,11 @@ function UserList({ users, onRemove, onToggle }) {
 }
 ```
 
-하지만 UserList 컴포넌트는 해당 함수들을 직접 사용하지 않고 중간 다리 역할만 할 뿐이다.        
-
-만약 이보다 더 복잡한 구조를 가진 프로젝트에서   
-이와 같이 특정 함수를 컴포넌트를 거쳐 전달을 해야 한다면 매우 번거로울 것이다. 
+여기서 UserList 컴포넌트는 해당 함수들을 직접 사용하지 않고 중간 다리 역할만 하고 있다.        
+만약 이보다 더 복잡한 구조를 가진 프로젝트에서 이와 같이 특정 함수를 컴포넌트를 거쳐 전달을 해야 한다면 매우 번거로울 것이다. 
 
 이 때 `Context API`와 `dispatch` 함수를 함께 사용하면    
-프로젝트 안에서 전역적으로 사용할 수 있는 **값**을 관리할 수 있다. 
+프로젝트 안에서 **전역적**으로 사용할 수 있는 **값**을 관리할 수 있다. 
 
 > (❗) `Context API`가 관리하는 건 꼭 `state`가 아니어도 된다.    
 > 그 값은 함수일 수도, 외부 라이브러리의 인스턴스일 수도, 심지어 DOM일 수도 있다. 
@@ -56,7 +54,6 @@ const UserDispatch = React.createContext(null);
 ```
 
 
----
 App 컴포넌트에 Context API를 적용해보자. 
 
 ```js
@@ -67,7 +64,7 @@ function App() {
 
   return (
     <UserDispatch.Provider value={dispatch}>
-      {/* ... */}
+      // ... 
       <UserList users={users} /> // 2
     </UserDispatch.Provider>
   )
@@ -75,7 +72,7 @@ function App() {
 ```
 
 **1️⃣ Context 생성하기**
-- UserDispatch라는 이름으로 `Context`를 만들고, 동시에 export하여 내보내준다.    
+- UserDispatch라는 이름으로 `Context`를 만들고, 동시에 `export`하여 내보내준다.    
 - 그러면 다른 파일에서 아래와 같이 불러와서 사용할 수 있다.
 
 ```js
@@ -123,7 +120,7 @@ function UserList({ users }) {
 ## 2. Context 조회하기
 
 이제 User 컴포넌트에서 `dispatch`를 사용할 차례이다.    
-그럴려면 `Hook`의 `useContext` 함수를 사용해 위에서 만든 UserDispatch Context를 조회해야 한다. 
+그러기 위해서는 `Hook`의 `useContext` 함수를 사용해 위에서 만든 UserDispatch Context를 조회해야 한다. 
 
 
 ```js
@@ -161,7 +158,7 @@ const User = React.memo(function User({ user }) {
 ```
 
 **1️⃣ `dispatch` 조회하기**
-- `useContext` 함수의 파라미터로 import한 UserDispatch Context를 전달해 `dispatch`를 반환받는다.
+- `useContext` 함수의 파라미터로 `import`한 UserDispatch Context를 전달해 `dispatch`를 반환받는다.
 
 
 **2️⃣ `dispatch` 사용하기**
@@ -170,9 +167,9 @@ const User = React.memo(function User({ user }) {
 
 
 
-## 3. `useReducer` 🆚 `useState`
+## 3. useReducer 🆚 useState
 
-지난 번과 다르게 `useState`를 사용하는 것과 `useReducer`를 사용하는 것의 큰 차이를 느낄 수 있었을 것이다. 
+[지난 번](./useReducer.md)과 다르게 `useState`를 사용하는 것과 `useReducer`를 사용하는 것의 큰 차이를 느낄 수 있었을 것이다. 
 
 `useReducer`를 사용하면 이렇게 `dispatch`와 `Context API`를 통해 전역적으로 사용하는 값을 관리할 수 있고,    
 그로 인해 코드의 구조가 훨씬 깔끔해질 수 있다. 
