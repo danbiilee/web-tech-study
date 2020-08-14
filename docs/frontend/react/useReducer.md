@@ -16,18 +16,20 @@ function reducer(state, action) {
 }
 ```
 
-**파라미터**   
+**🔸 파라미터**   
 
 - `state`: 현재 `state` 값
 - `action`
   - 업데이트를 위한 정보를 가지고 있다.
-  - 주로 `type`값을 지닌 객체 형태로 사용한다. 
+  - 주로 `type`값을 지닌 **객체 형태**로 사용한다. 
   - `type` 값은 주로 `대문자`와 `_`로 작성한다. 
+  
   ```js
   // 카운터에 1을 더하는 액션
   {
     type: 'INCREMENT'
   }
+
   // 새 할 일을 등록하는 액션
   {
     type: 'ADD_TODO',
@@ -51,14 +53,14 @@ function reducer(state, action) {
 const [ state, dispatch ] = useReducer(reducer, initialState);
 ```
 
-**파라미터**   
+**🔸 파라미터**   
 - `reducer`: `reducer` 함수
 - `initialState`: 초기 `state` 값
 
-**반환하는 배열 값**
+**🔸 반환하는 배열 값**
 - `state`: 컴포넌트에서 사용할 `state`
 - `dispatch`
-  - 액션을 발생시키는 함수 
+  - 액션을 발생시키는 **함수** 
   - 사용법: `dispatch({ type: 'INCREMENT' })`
 
 
@@ -115,11 +117,11 @@ App 컴포넌트도 `useReducer`를 사용해 변경하면 아래와 같다.
 
 ```js
 const initialState = { // 1
-	inputs: {
-		username: '',
-		email: '',
-	},
-	users: [
+  inputs: {
+    username: '',
+    email: '',
+  },
+  users: [
     {
       id: 1,
       username: 'danbi',
@@ -156,7 +158,6 @@ function reducer(state, action) { // 2
         inputs: initialState.inputs,
         users: state.users.concat(action.user),
       };
-    // ... 
     default:
       return state;
   }
@@ -164,33 +165,31 @@ function reducer(state, action) { // 2
 
 function App() {
   const [ state, dispatch ] = useReducer(reducer, initialState); // 3
-	const nextId = useRef(4);
+  const nextId = useRef(4);
 
-	const { users } = state; // 3
-	const { username, email } = state.inputs;
+  const { users } = state; // 3
+  const { username, email } = state.inputs;
 
-	const onChange = useCallback(e => {
-		const { name, value } = e.target;
-		dispatch({ // 4 
-			type: 'CHANGE_INPUT',
-			name,
-			value,
-		});
-	}, []);
+  const onChange = useCallback(e => {
+    const { name, value } = e.target;
+    dispatch({ // 4 
+      type: 'CHANGE_INPUT',
+      name,
+      value,
+    });
+  }, []);
 
-	const onCreate = useCallback(() => {
-		dispatch({ // 4
-			type: 'CREATE_USER',
-			user: {
-				id: nextId.current++, 
-				username,
-				email
-			}
-		});
+  const onCreate = useCallback(() => {
+    dispatch({ // 4
+      type: 'CREATE_USER',
+      user: {
+        id: nextId.current++, 
+        username,
+        email
+      }
+    });
   }, [ username, email ]);
   
-  // ... 
-
   return (
     // ...
   );
@@ -220,7 +219,7 @@ function App() {
 
 
 
-## 3. `useReducer` 🆚 `useState`
+## 3. useReducer 🆚 useState
 
 어떨 때 `useState`를 쓰고, 어떨 때 `useReducer`를 써야한다는 규칙은 없다.     
 
