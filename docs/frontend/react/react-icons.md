@@ -11,7 +11,7 @@
 프로젝트 디렉터리에서 라이브러리를 설치한다.
 
 ```js
-yarn add react-icons
+$ yarn add react-icons
 ``` 
 
 
