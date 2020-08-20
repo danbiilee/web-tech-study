@@ -21,29 +21,30 @@ const fn = () => true;
 console.log(`${fn}`); // "() => true"
 ```
 
-템플릿 리터럴을 사용하면서도 그 안에 넣은 자바스크립트 값을 조회하고 싶을 때, `Tagged Template Literal` 문법을 사용할 수 있다. 
+템플릿 리터럴을 사용하면서도 그 안에 넣은 자바스크립트 값을 조회하고 싶을 때,     
+`Tagged Template Literal` 문법을 사용하면 된다. 
 
 ```js
 const red = '빨간색';
 const blue = '파란색';
 function favoriteColors(texts, ...values) {
-    console.log(texts);
-    console.log(values);
+	console.log(texts);
+	console.log(values);
 }
 favoriteColors`내가 좋아하는 색은 ${red}와 ${blue}이다.`;
-// ["내가 좋아하는 색은 ", "와 ", "이다."]
-// ["빨간색", 파란색"]
+// texts ["내가 좋아하는 색은 ", "와 ", "이다."]
+// values ["빨간색", 파란색"]
 ```
 
-그럼 이렇게 우리가 입력한 문자열이 모두 분해되어, 문자열과 `${}` 를 통해 넣어준 자바스크립트 값을 따로 조회하는 것이 가능해진다. 
+위의 예제처럼 우리가 입력한 문자열이 모두 분해되어, 문자열과 `${}` 를 통해 넣어준 자바스크립트 값을 따로 조회하는 것이 가능해진다. 
 
-> 여기서 함수 파라미터에는 `파라미터의 rest` 문법이 사용됐다.    
+> (❗️) 여기서 함수 파라미터에는 `파라미터의 rest` 문법이 사용됐다.    
 
 `styled-components` 에서는 이런 문법을 사용해 아래와 같이 컴포넌트의 `props`를 읽어오기도 한다. 
 
 ```js
 const StyledDiv = styled`
-    background: ${props => props.color};
+	background: ${props => props.color};
 `;
 ``` 
 
@@ -65,6 +66,11 @@ $ yarn add styled-components
 
 ### 3.1 컴포넌트 만들기
 
+`styled-components` 를 사용하면 `import`한 `styled` 객체를 이용해 특정 스타일을 가진 컴포넌트를 만들 수 있다.
+
+`div` 태그를 스타일링 하고 싶으면 `styled.div`,    
+`input` 태그를 스타일링 하고 싶으면 `styled.input` 와 같은 형식으로 사용하면 된다. 
+
 ```js
 // App.js
 import React from 'react';
@@ -83,11 +89,6 @@ function App() {
 
 export default App;
 ```
-
-`styled-components` 를 사용하면 이렇게 import한 `styled` 객체를 이용해 특정 스타일을 가진 컴포넌트를 만들 수 있다.
-
-`div` 태그를 스타일링 하고 싶으면 `styled.div`,    
-`input` 태그를 스타일링 하고 싶으면 `styled.input` 와 같은 형식으로 사용하면 된다. 
 
 
 ### 3.2 props 전달하기 
@@ -139,7 +140,8 @@ function App() {
 }
 ```
 
-이렇게 여러 줄의 CSS 코드를 조건부로 설정하고 싶다면 `styled-components` 라이브러리에서 `css` 객체를 추가적으로 import하여 사용해야 한다. 
+이렇게 여러 줄의 CSS 코드를 조건부로 설정하고 싶다면,     
+`styled-components` 라이브러리에서 `css` 객체를 추가적으로 `import`하여 사용해야 한다. 
 
 
 ### 3.4 ThemeProvider 기능 사용하기
@@ -179,10 +181,42 @@ function App() {
 }
 ``` 
 
-이렇게 `ThemeProvider`의 `theme` 속성을 설정하면,    
+이렇게 `ThemeProvider`에 `theme` 속성을 설정하면,    
 `ThemeProvider` 내부에 렌더링된 `styled-components` 로 만든 모든 컴포넌트에서 `palette` 를 조회해 색상 값들을 사용할 수 있게 된다. 
 
 Button 컴포넌트에서 위에 선언한 `palette.blue` 값을 조회해보자.
+
+```js
+// Button.js
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { darken, lighten } from 'polished';
+
+const StyledButton = styled.button`
+	/* ... */
+	${props => {
+		const selected = props.theme.palette.blue;
+		return css`
+			background: ${selected};
+			&:hover {
+				background: ${lighten(0.1, selected)};
+			}
+			&:active {
+				background: ${darken(0.1, selected)};
+			}
+		`;
+	}}
+`;
+```
+
+`ThemeProvider` 로 설정한 값은 `props.theme` 으로 조회할 수 있다.    
+
+위에서는 `selected` 값이 무조건 blue 를 가리키게 했지만,   
+Button 컴포넌트가 color 라는 `props`를 통해 받아오게 될 색상으로 수정하면 아래와 같다. 
+
+```js
+const selected = props.theme.palette[props.color];
+```
 
 
 
@@ -220,8 +254,7 @@ const StyledButton = styled.button`
 
 
 
-
-## 글로벌 스타일 추가
+## 5. 글로벌 스타일 
 
 특정 컴포넌트를 만들어서 스타일링 하는 게 아니라 글로벌 스타일링을 추가할 땐,  
  `styled-components`의 `createGlobalStyle` 을 사용한다.
