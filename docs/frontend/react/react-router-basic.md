@@ -77,6 +77,37 @@ export default App;
 리액트 라우터를 사용할 땐 일반 `<a>` 태그를 사용하면 안된다.  
 만약 사용한다면, `onClick` 이벤트 핸들러에서 `e.preventDefault()` 를 호출하고 따로 주소를 변환시켜줘야 한다.
 
-대신 클릭했을 때 다른 주소로 이동시키는 `Link` 라는 컴포넌트를 사용해야 한다.  
+대신, 클릭했을 때 다른 주소로 이동시키는 `Link` 라는 컴포넌트를 사용해야 한다.  
+
 그 이유는 `a` 태그의 기본적인 속성이 페이지를 이동시키면서 페이지를 아예 새로 불러오는데,  
-그렇게 되면 리액트 앱이 지니고 있던 상태들이 초기화 되면서 렌러딩된 컴포넌트들이 모두 사라지고 새로 렌더링을 하게 되기 때문이다.
+그렇게 되면 리액트 앱이 지니고 있던 상태들이 초기화 되면서 렌러딩된 컴포넌트들이 모두 사라지고 새로 렌더링을 하게 되기 때문이다.   
+`Link` 컴포넌트는 `HTML5 History API`를 사용해 브라우저의 주소만 바꿀 뿐, 페이지를 새로 불러오지는 않는다. 
+
+```js
+// App.js
+
+import React from 'react';
+import { Route, Link } from 'react-router-dom'; 
+import Home from './Home';
+import About from './About';
+
+const App = () => {
+  return (
+		<div>
+			<ul>
+				<li>
+					<Link to="/">Home</Link>
+				</li>
+				<li>
+					<Link to="/about">About</Link>
+				</li>
+			</ul>
+			<hr />
+			<Route path="/" exact component={Home} /> 
+			<Route path="/about" component={About} />
+    </div>
+  );
+};
+
+export default App;
+```
