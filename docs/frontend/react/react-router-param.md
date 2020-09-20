@@ -80,4 +80,57 @@ const App = () => {
 export default App;
 ```
 
+
 ## 2. Query
+
+이번엔 About 컴포넌트에서 쿼리를 사용해보자.  
+쿼리는 props로 전달되는 `location` 객체에 있는 `search` 값에서 읽어올 수 있다. 
+`location` 객체는 아래와 같이 현재 앱이 갖고 있는 주소에 대한 정보를 지니고 있다. 
+
+```js
+{
+  key: 'ac3df4', // not with HashHistory!
+  pathname: '/somewhere'
+  search: '?some=search-string',
+  hash: '#howdy',
+  state: {
+    [userDefined]: true
+  }
+}
+```
+
+이 때 `search` 값은 문자열 형태로 되어있으므로, `qs` 라이브러리를 사용해 객체 형태로 변환해준다. 
+
+먼저 라이브러리를 설치한다. 
+
+```js
+$ yarn add qs
+```
+
+`/about/detail=true` 경로에 들어갔을 때, About 컴포넌트의 추가 정보가 보일 수 있도록 구현해보자.    
+About 컴포넌트에서 전달받은 `location.search` 의 detail 값을 받아와서, 해당 값이 true일 때 추가 정보를 보여주도록 하자. 
+
+
+```js
+// About.js
+
+import React from 'react';
+import qs from 'qs';
+
+const About = ({ location }) => {
+	const query = qs.parse(location.search, {
+		ignoreQueryPrefix: true,
+	});
+	const detail = query.detail === 'true'; // 쿼리의 파싱 결과값은 문자열이다.
+
+	return (
+		<div>
+			<h1>소개</h1>
+			<p>This is exercise project that practices react-router.</p>
+			{detail && <p>Additional infromation is blah blah...</p>}
+		</div>
+	);
+};
+
+export default About;
+```
