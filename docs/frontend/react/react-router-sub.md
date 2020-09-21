@@ -14,8 +14,8 @@ import Profile from './Profile';
 
 const Profiles = () => {
   return (
-    <div>
-      <h3>User List: </h3>
+		<div>
+			<h3>User List: </h3>
 			<ul>
 				<li>
 					<Link to="/profiles/danbi">danbi</Link>
@@ -24,14 +24,14 @@ const Profiles = () => {
 					<Link to="/profiles/ash">ash</Link>
 				</li>
 			</ul>
-			
+
 			<Route 
-				path="/profiles" 
-				exact 
-				render={() => <div>유저를 선택해 주세요.</div>} // 1
+			path="/profiles" 
+			exact 
+			render={() => <div>유저를 선택해 주세요.</div>} // 1
 			/>
 			<Route path="/profiles/:username" component={Profile} />
-    </div>
+		</div>
   );
 };
 
