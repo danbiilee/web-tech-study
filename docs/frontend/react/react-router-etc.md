@@ -204,6 +204,59 @@ export default App;
 ## 4. NavLink
 
 `NavLink` 는 `Link` 컴포넌트와 비슷한데,  
-현재 경로와 `Link` 에서 사용하는 경로가 일치하는 경우 특정 스타일 혹은 클래스를 적용할 수 있는 컴포넌트이다.
+현재 경로와 `Link` 에서 사용하는 경로가 일치하는 경우 **특정 스타일 혹은 클래스를 적용**할 수 있는 컴포넌트이다.
+
+`activeStyle` 속성에 스타일을, `activeClassName` 속성에 CSS 클래스명을 지정해주면 된다. 
+
+Profiles 컴포넌트에서 `Link` 대신 `NavLink` 컴포넌트를 사용해보자.
+
+```js
+// Profiles.js
+
+import React from 'react';
+import { NavLink, Route } from 'react-router-dom';
+import Profile from './Profile';
+import WithRouterSample from './WithRouterSample';
+
+const Profiles = () => {
+  return (
+    <div>
+      <h3>User List: </h3>
+      <ul>
+        <li>
+          <NavLink
+            to="/profiles/danbi"
+            activeStyle={{ background: 'black', color: 'white' }}
+          >
+            danbi
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/profiles/ash"
+            activeStyle={{ background: 'black', color: 'white' }}
+          >
+            ash
+          </NavLink>
+        </li>
+      </ul>
+
+      <Route path="/profiles" exact render={() => <div>Select a User!</div>} />
+      <Route path="/profiles/:username" component={Profile} />
+      <WithRouterSample />
+    </div>
+  );
+};
+
+export default Profiles;
+```
+
 
 ## 5. 그 외
+- [`Redirect`](https://reactrouter.com/web/example/auth-workflow): 페이지를 리다이렉트하는 컴포넌트
+- [`Prompt`](https://reactrouter.com/web/example/preventing-transitions): `history.block`의 컴포넌트 버전
+- [`Route Config`](https://reactrouter.com/web/example/route-config): Angular나 Vue처럼 배열/객체를 사용해 라우트 정의하는 방법
+- [`Memory Router`](https://reactrouter.com/web/api/MemoryRouter): 실제로 존재하지 않는 주소의 라우터. 리액트 네이티브나 임베디드 웹앱에서 사용하면 유용하다. 
+  
+> ✨ **공식 매뉴얼** 참고하기    
+> https://reactrouter.com/web/guides/philosophy
