@@ -66,6 +66,7 @@
 
   - [Node.js란](./docs/backend/node/nodejs.md)
   - [nvm과 npm의 차이](./docs/backend/node/nvm-npm.md)
+  - [yarn을 이용한 패키지 관리](./docs/backend/node/yarn.md)
   - [모듈](./docs/backend/node/module.md)
 
 - REST API
