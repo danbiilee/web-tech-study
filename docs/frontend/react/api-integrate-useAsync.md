@@ -256,6 +256,8 @@ export default User;
 리스트의 항목을 클릭하면 클릭한 사용자의 `id` 를 `userId` 값으로 설정하여 User 컴포넌트를 조건부 렌더링 한다. 
 
 ```js
+// src/Users.js
+
 const Users = () => {
   const [state, fetchData] = useAsync(getUsers, [], true);
   const { loading, data: users, error } = state;
