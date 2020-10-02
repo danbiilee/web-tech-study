@@ -55,8 +55,11 @@
   - [설치 및 사용하기](./docs/frontend/react/react-router-basic.md)
   - [파라미터와 쿼리](./docs/frontend/react/react-router-param.md)
   - [서브 라우트](./docs/frontend/react/react-router-sub.md)
-  - [부가 기능](./docs/frontend/react/react-router-etc.md)
-
+  - [부가 기능](./docs/frontend/react/react-router-etc.md)  
+- **📂 API 연동하기**
+  - [API 연동의 기본](./docs/frontend/react/api-integrate-basic.md)
+  - [useReducer로 요청 상태 관리하기](./docs/frontend/react/api-integrate-useReducer.md)
+  - [커스텀 Hook으로 요청 상태 관리 로직 재사용하기](./docs/frontend/react/api-integrate-useAsync.md)
 
 
 
