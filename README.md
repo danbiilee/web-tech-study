@@ -60,6 +60,8 @@
   - [API 연동의 기본](./docs/frontend/react/api-integrate-basic.md)
   - [useReducer로 요청 상태 관리하기](./docs/frontend/react/api-integrate-useReducer.md)
   - [커스텀 Hook으로 요청 상태 관리 로직 재사용하기](./docs/frontend/react/api-integrate-useAsync.md)
+  - [Context와 함께 사용하기](./docs/frontend/react/api-integrate-context.md)
+  - [중복 코드 리팩토링하기](./docs/frontend/react/api-integrate-refactoring.md)
 
 
 
