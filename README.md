@@ -62,7 +62,11 @@
   - [커스텀 Hook으로 요청 상태 관리 로직 재사용하기](./docs/frontend/react/api-integrate-useAsync.md)
   - [Context와 함께 사용하기](./docs/frontend/react/api-integrate-context.md)
   - [중복 코드 리팩토링하기](./docs/frontend/react/api-integrate-refactoring.md)
-
+- **📂 리덕스**
+  - [키워드 톺아보기](./docs/frontend/react/redux-keyword.md)
+  - [3가지 규칙](./docs/frontend/react/redux-rules.md)
+  - [연습하기](./docs/frontend/react/redux-practice.md)
+  - [리덕스 모듈 만들기](./docs/frontend/react/redux-module.md)
 
 
 ## ✋ BACK-END
