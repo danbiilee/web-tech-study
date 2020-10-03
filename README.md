@@ -67,6 +67,8 @@
   - [3가지 규칙](./docs/frontend/react/redux-rules.md)
   - [연습하기](./docs/frontend/react/redux-practice.md)
   - [리덕스 모듈 만들기](./docs/frontend/react/redux-module.md)
+  - [카운터 구현하기](./docs/frontend/react/redux-counter.md)
+  - [리덕스 개발자도구 적용하기](./docs/frontend/react/redux-devTools.md)
 
 
 ## ✋ BACK-END
