@@ -55,7 +55,7 @@
   - [설치 및 사용하기](./docs/frontend/react/react-router-basic.md)
   - [파라미터와 쿼리](./docs/frontend/react/react-router-param.md)
   - [서브 라우트](./docs/frontend/react/react-router-sub.md)
-  - [부가 기능](./docs/frontend/react/react-router-etc.md)  
+  - [부가 기능](./docs/frontend/react/react-router-etc.md)
 - **📂 API 연동하기**
   - [API 연동의 기본](./docs/frontend/react/api-integrate-basic.md)
   - [useReducer로 요청 상태 관리하기](./docs/frontend/react/api-integrate-useReducer.md)
@@ -71,7 +71,9 @@
   - [리덕스 개발자도구 적용하기](./docs/frontend/react/redux-devTools.md)
   - [할 일 목록 구현하기](./docs/frontend/react/redux-todos.md)
   - [useSelector 최적화](./docs/frontend/react/redux-useSelector.md)
-
+- **📂 리덕스 미들웨어**
+  - [리덕스 미들웨어란](./docs/frontend/react/redux-middleware.md)
+  - [미들웨어 만들어보기](./docs/frontend/react/redux-middleware-make.md)
 
 ## ✋ BACK-END
 
