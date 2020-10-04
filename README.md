@@ -69,6 +69,8 @@
   - [리덕스 모듈 만들기](./docs/frontend/react/redux-module.md)
   - [카운터 구현하기](./docs/frontend/react/redux-counter.md)
   - [리덕스 개발자도구 적용하기](./docs/frontend/react/redux-devTools.md)
+  - [할 일 목록 구현하기](./docs/frontend/react/redux-todos.md)
+  - [useSelector 최적화](./docs/frontend/react/redux-useSelector.md)
 
 
 ## ✋ BACK-END
