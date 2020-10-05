@@ -78,6 +78,7 @@
     - [redux-logger 사용 및 리덕스 개발자도구 적용하기](./docs/frontend/react/redux-middleware-devTools.md)
   - **📁 redux-thunk**
     - [redux-thunk 설치 및 적용하기](./docs/frontend/react/redux-thunk.md)
+    - [redux-thunk로 프로미스 다루기](./docs/frontend/react/redux-thunk-promise.md)
 
 ## ✋ BACK-END
 
