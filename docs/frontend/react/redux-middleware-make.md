@@ -91,3 +91,27 @@ serviceWorker.unregister();
 ```
 
 ## 4. 미들웨어 수정하기
+
+만약 액션이 리듀서까지 전달되고 난 후의 새로운 상태를 확인하고 싶다면 다음과 같이 수정할 수 있다.
+
+### middlewares/myLogger.js
+
+```js
+const myLogger = (store) => (next) => (action) => {
+  console.log(action);
+  const result = next(action); // 다음 미들웨어(또는 리듀서)에게 액션 전달
+
+  console.log('\t', store.getState()); // 업데이트 이후의 상태를 조회
+  return result;
+};
+
+export default myLogger;
+```
+
+이렇게 미들웨어 안에서는 무엇이든 할 수 있다. 예를 들어 액션 값을 객체가 아닌 함수로 전달받아, 액션이 함수타입이면 이를 실행시키게 할 수도 있다. (이게 추후에 배울 `redux-thunk`이다.)
+
+---
+
+이번엔 액션 객체와 상태를 로깅하는 미들웨어를 직접 만들어보았지만, 리덕스 관련 값들을 콘솔에 로깅하는 건 [redux-logger](https://github.com/LogRocket/redux-logger) 라는 미들웨어를 사용하는 게 더욱 좋다.
+
+다음 섹션에서는 `redux-logger` 라는 라이브러리를 설치 및 적용하고, 미들웨어를 사용하는 경우 리덕스 개발자도구를 어떻게 사용하는지 알아보도록 하겠다.
