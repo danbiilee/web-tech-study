@@ -71,9 +71,13 @@
   - [리덕스 개발자도구 적용하기](./docs/frontend/react/redux-devTools.md)
   - [할 일 목록 구현하기](./docs/frontend/react/redux-todos.md)
   - [useSelector 최적화](./docs/frontend/react/redux-useSelector.md)
-- **📂 리덕스 미들웨어**
-  - [리덕스 미들웨어란](./docs/frontend/react/redux-middleware.md)
-  - [미들웨어 만들어보기](./docs/frontend/react/redux-middleware-make.md)
+- **🗂 리덕스 미들웨어**
+  - 📂 준비하기
+    - [리덕스 미들웨어란](./docs/frontend/react/redux-middleware.md)
+    - [미들웨어 만들어보기](./docs/frontend/react/redux-middleware-make.md)
+    - [redux-logger 사용 및 리덕스 개발자도구 적용하기](./docs/frontend/react/redux-middleware-devTools.md)
+  - 📁 redux-thunk
+    - [redux-thunk 설치 및 적용하기](./docs/frontend/react/redux-thunk.md)
 
 ## ✋ BACK-END
 
