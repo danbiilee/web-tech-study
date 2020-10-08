@@ -80,6 +80,7 @@
     - [redux-thunk 설치 및 적용하기](./docs/frontend/react/redux-thunk.md)
     - [redux-thunk로 프로미스 다루기](./docs/frontend/react/redux-thunk-promise.md)
     - [API 재로딩 이슈 해결](./docs/frontend/react/redux-thunk-apiIssue.md)
+    - [라우터 연동하기](./docs/frontend/react/redux-thunk-router.md)
 
 ## ✋ BACK-END
 
