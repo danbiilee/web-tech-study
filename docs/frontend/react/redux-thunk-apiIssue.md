@@ -7,7 +7,7 @@
 포스트 목록이 재로딩되는 문제를 해결하는 방법엔 두 가지가 있다.
 
 첫 번째는 데이터가 이미 존재한다면 요청을 하지 않는 방법이고,  
-두 번째는 로딩을 새로하되, `로딩중...`을 띄우지 않는 방법이다. 두 번째 방법은 뒤로가기를 통해 포스트 목록을 다시 조회할 때 최신 데이터를 보여줄 수 있다는 장점이 있다.
+두 번째는 로딩을 새로하되, `로딩중...`을 표시하지 않는 방법이다. 두 번째 방법은 뒤로가기를 통해 포스트 목록을 다시 조회할 때 최신 데이터를 보여줄 수 있다는 장점이 있다.
 
 **🔍 1️⃣ 요청하지 않기**
 
@@ -40,7 +40,7 @@ const PostListContainer = () => {
 export default PostListContainer;
 ```
 
-**🔍 2️⃣ 로딩중...을 띄우지 않기**
+**🔍 2️⃣ 로딩중...을 표시하지 않기**
 
 이번엔 두 번째 방법을 적용해보겠다. 우선 asyncUtils.js의 `handleAsyncActions` 함수를 다음과 같이 수정한다.
 
@@ -149,6 +149,7 @@ export default PostListContainer;
 두 번째는 포스트 내용을 비우지 않으면서 데이터가 있다면 요청을 하지 않거나, 요청은 하되 `로딩중...`을 표시하지 않는 방법이다.
 
 **🔍 1️⃣ 포스트 내용 비우기**
+
 첫 번째 방법을 적용하려면 posts 모듈에 `CLEAR_POST` 라는 액션을 만들어야 한다.
 
 ### modules/posts.js
@@ -239,7 +240,8 @@ export default PostContainer;
 
 이렇게 해주면 포스트 페이지에서 떠날 때마다 포스트를 비우게 되므로, 이전 포스트가 보여지는 문제가 해결된다.
 
-하지만 한 가지 단점은 이미 읽었던 포스트를 다시 조회할 때도 새로 요청을 한다는 점이다. 이 문제를 개선하려면, posts 모듈에서 관리하는 상태의 구조를 바꿔야 한다.
+하지만 한 가지 단점은 이미 읽었던 포스트를 다시 조회할 때도 새로 요청을 한다는 점이다.  
+이 문제를 개선하려면(**두 번째 방법을 적용하려면**), posts 모듈에서 관리하는 상태의 구조를 바꿔야 한다.
 
 현재 이 구조를
 
@@ -360,6 +362,157 @@ export const handleAsyncActionsById = (type, key, keepData = false) => {
 };
 ```
 
+이제 posts 모듈을 수정한다. 기존의 CLEAR_POST 액션은 더이상 필요하지 않으므로 제거하고, asyncUtils.js 에 새로 만든 함수들을 적용한다.
+
+### modules/posts.js
+
+```js
+import * as postApi from '../api/posts'; // api/posts 안의 함수 모두 불러오기
+import {
+  createPromiseThunk,
+  createPromiseThunkById,
+  handleAsyncActions,
+  handleAsyncActionsById,
+  reducerUtils,
+} from '../lib/asyncUtils';
+
+// 액션 타입
+// 포스트 목록 조회
+const GET_POSTS = 'posts/GET_POSTS';
+const GET_POSTS_SUCCESS = 'posts/GET_POSTS_SUCCESS';
+const GET_POSTS_ERROR = 'posts/GET_POSTS_ERROR';
+// 포스트 하나 조회
+const GET_POST = 'posts/GET_POST';
+const GET_POST_SUCCESS = 'posts/GET_POST_SUCCESS';
+const GET_POST_ERROR = 'posts/GET_POST_ERROR';
+
+// thunk 함수
+export const getPosts = createPromiseThunk(GET_POSTS, postApi.getPosts);
+export const getPost = createPromiseThunkById(GET_POST, postApi.getPostById);
+
+// 초깃값
+const initialState = {
+  posts: reducerUtils.initial(),
+  post: {},
+};
+
+// 리듀서
+export default function posts(state = initialState, action) {
+  switch (action.type) {
+    case GET_POSTS:
+    case GET_POSTS_SUCCESS:
+    case GET_POSTS_ERROR:
+      return handleAsyncActions(GET_POSTS, 'posts', true)(state, action);
+    case GET_POST:
+    case GET_POST_SUCCESS:
+    case GET_POST_ERROR:
+      return handleAsyncActionsById(GET_POST, 'post')(state, action);
+    default:
+      return state;
+  }
+}
+```
+
 **🔍 2️⃣ 요청하지 않기**
 
-**🔍 3️⃣ 로딩중...을 띄우지 않기**
+포스트를 매번 비우지 않으면서, 이미 조회한 포스트가 있다면 아예 요청하지 않는 방법을 적용해보겠다.
+
+PostContainer를 다음과 같이 수정한다.
+
+### containers/PostContainer.js
+
+```js
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Post from '../components/Post';
+import { getPost } from '../modules/posts';
+
+const PostContainer = ({ postId }) => {
+  const { loading, data, error } = useSelector(
+    (state) =>
+      state.posts.post[postId] || {
+        loading: false,
+        data: null,
+        error: null,
+      }
+  ); // 맨 처음 포스트를 조회할 땐 데이터가 null이므로, 비구조화 할당 오류 방지.
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data) return; // 포스트가 존재하면 요청하지 않는다.
+    dispatch(getPost(postId));
+  }, [dispatch, postId]);
+
+  if (loading) return <div>로딩중...</div>;
+  if (error) return <div>에러 발생!</div>;
+  if (!data) return null;
+  return <Post post={data} />;
+};
+
+export default PostContainer;
+```
+
+**🔍 3️⃣ 로딩중...을 표시하지 않기**
+
+만약 요청은 하지만 `로딩중...`을 표시하지 않으려면 먼저 리듀서를 다음과 같이 수정하고,
+
+### modules/posts.js
+
+```js
+export default function posts(state = initialState, action) {
+  switch (action.type) {
+    case GET_POSTS:
+    case GET_POSTS_SUCCESS:
+    case GET_POSTS_ERROR:
+      return handleAsyncActions(GET_POSTS, 'posts', true)(state, action);
+    case GET_POST:
+    case GET_POST_SUCCESS:
+    case GET_POST_ERROR:
+      return handleAsyncActionsById(GET_POST, 'post', true)(state, action);
+    default:
+      return state;
+  }
+}
+```
+
+PostContainer를 다음과 같이 수정하면 된다.
+
+### containers/PostContainer.js
+
+```js
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Post from '../components/Post';
+import { getPost } from '../modules/posts';
+
+const PostContainer = ({ postId }) => {
+  const { loading, data, error } = useSelector(
+    (state) =>
+      state.posts.post[postId] || {
+        loading: false,
+        data: null,
+        error: null,
+      }
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPost(postId));
+  }, [dispatch, postId]);
+
+  // 로딩중이면서 데이터가 없을 때만 로딩중...을 표시한다.
+  if (loading && !data) return <div>로딩중...</div>;
+  if (error) return <div>에러 발생!</div>;
+  if (!data) return null;
+  return <Post post={data} />;
+};
+
+export default PostContainer;
+```
+
+---
+
+### ✅ How to Make a Choice ❓❗️
+
+데이터를 제대로 캐싱하고 싶다면 요청하지 않는 방법을 선택하고,  
+포스트 정보가 바뀔 수 있는 가능성이 있다면 새로 요청하되, 로딩중은 표시하지 않는 방법을 선택하면 되겠다.
