@@ -85,4 +85,16 @@ yarn self-update
 - `nodemon`: 코드 변경시 자동으로 서버를 재시작해준다.
 - `concurrently`: 동시에 여러 서버를 실행시켜준다. 
 
+다음은 pacakge.json 의 scripts 명령어 설정이다.    
+명령어창에서 `yarn dev` 를 하면, `concurrently` 로 인해 client 디렉터리와 server 디렉터리의 코드가 동시에 실행될 것이다. 
+
+```js
+{
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server/server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+}
+```
  
